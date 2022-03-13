@@ -2,6 +2,7 @@ package com.github.foxmorg.rain;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable{
     private static final long serialVersionUID = 1L;
@@ -39,7 +40,20 @@ public class Game extends Canvas implements Runnable{
     @Override
     public void run() {
         while (running) {
-            System.out.println("Running...");
+            update();
+            render();
+        }
+    }
+
+    private void update() {
+
+    }
+
+    private void render() {
+        BufferStrategy bs = getBufferStrategy();
+        if (bs == null) {
+            createBufferStrategy(3);
+            return;
         }
     }
 
