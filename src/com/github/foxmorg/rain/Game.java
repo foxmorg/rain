@@ -3,6 +3,8 @@ package com.github.foxmorg.rain;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 
 public class Game extends Canvas implements Runnable{
     private static final long serialVersionUID = 1L;
@@ -14,6 +16,9 @@ public class Game extends Canvas implements Runnable{
     private Thread thread;
     private JFrame frame;
     private boolean running = false;
+
+    private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 
     public Game() {
         Dimension size = new Dimension(width * scale, height * scale);
