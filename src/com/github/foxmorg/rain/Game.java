@@ -1,6 +1,7 @@
 package com.github.foxmorg.rain;
 
 import com.github.foxmorg.rain.graphics.Screen;
+import com.github.foxmorg.rain.input.Keyboard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +19,7 @@ public class Game extends Canvas implements Runnable{
 
     private Thread thread;
     private JFrame frame;
+    private Keyboard key;
     private boolean running = false;
 
     private Screen screen;
@@ -30,8 +32,10 @@ public class Game extends Canvas implements Runnable{
         setPreferredSize(size);
 
         screen = new Screen(width, height);
-
         frame = new JFrame();
+        key = new Keyboard();
+
+        addKeyListener(key);
     }
 
     public synchronized void start() {
@@ -83,8 +87,9 @@ public class Game extends Canvas implements Runnable{
     int x = 0, y = 0;
 
     private void update() {
+        key.update();
         x++;
-//        y++;
+        y++;
     }
 
     private void render() {
@@ -116,6 +121,7 @@ public class Game extends Canvas implements Runnable{
         game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.frame.setLocationRelativeTo(null);
         game.frame.setVisible(true);
+        game.requestFocus();
 
         game.start();
     }
