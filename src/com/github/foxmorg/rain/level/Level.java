@@ -36,7 +36,7 @@ public class Level {
 
     public void render(int xScroll, int yScroll, Screen screen) {
         screen.setOffset(xScroll, yScroll);
-        int x0 = (xScroll >> 4) - 1; // divide by 16
+        int x0 = (xScroll >> 4) - 1; // >> 4 - the same as divide by 16
         int x1 = ((xScroll + screen.width) >> 4) + 1;
         int y0 = (yScroll >> 4) - 1;
         int y1 = ((yScroll + screen.height) >> 4) + 1;
