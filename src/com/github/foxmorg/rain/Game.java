@@ -1,5 +1,6 @@
 package com.github.foxmorg.rain;
 
+import com.github.foxmorg.rain.entity.mob.Player;
 import com.github.foxmorg.rain.graphics.Screen;
 import com.github.foxmorg.rain.input.Keyboard;
 import com.github.foxmorg.rain.level.Level;
@@ -23,6 +24,7 @@ public class Game extends Canvas implements Runnable{
     private JFrame frame;
     private Keyboard key;
     private Level level;
+    private Player player;
     private boolean running = false;
 
     private Screen screen;
@@ -38,6 +40,7 @@ public class Game extends Canvas implements Runnable{
         frame = new JFrame();
         key = new Keyboard();
         level = new RandomLevel(64, 64);
+        player = new Player(key);
 
         addKeyListener(key);
     }
@@ -88,14 +91,9 @@ public class Game extends Canvas implements Runnable{
         stop();
     }
 
-    int x = 0, y = 0;
-
     private void update() {
         key.update();
-        if (key.up) y--;
-        if (key.down) y++;
-        if (key.left) x--;
-        if (key.right) x++;
+        player.update();
     }
 
     private void render() {
@@ -106,7 +104,7 @@ public class Game extends Canvas implements Runnable{
         }
 
         screen.clear();
-        level.render(x, y, screen);
+        level.render(player.x, player.y, screen);
 
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
@@ -114,6 +112,9 @@ public class Game extends Canvas implements Runnable{
 
         Graphics g = bs.getDrawGraphics();
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Verdana", 0, 50));
+        g.drawString("X: " + player.x + ", Y: " + player.y, 350, 300);
         g.dispose();
         bs.show();
     }
