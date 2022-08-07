@@ -1,5 +1,7 @@
 package com.github.foxmorg.rain.entity.mob;
 
+import com.github.foxmorg.rain.graphics.Screen;
+import com.github.foxmorg.rain.graphics.Sprite;
 import com.github.foxmorg.rain.input.Keyboard;
 
 public class Player extends Mob {
@@ -28,8 +30,8 @@ public class Player extends Mob {
     }
 
     @Override
-    public void render() {
-
+    public void render(Screen screen) {
+        screen.renderPlayer(x, y, Sprite.player0);
     }
 
 }
