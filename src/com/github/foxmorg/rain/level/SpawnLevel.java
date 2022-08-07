@@ -21,6 +21,7 @@ public class SpawnLevel extends Level {
             int w = image.getWidth();
             int h = image.getHeight();
             tiles = new Tile[w * h];
+            levelPixels = new int[w * h];
             image.getRGB(0, 0, w, h, levelPixels, 0, w);
         } catch(IOException e) {
             e.printStackTrace();
@@ -36,9 +37,9 @@ public class SpawnLevel extends Level {
     @Override
     protected void generateLevel() {
         for (int i = 0; i < levelPixels.length; i++) {
-            if (levelPixels[i] == 0x00FF00) tiles[i] = Tile.grass;
-            if (levelPixels[i] == 0xFFFF00) tiles[i] = Tile.flower;
-            if (levelPixels[i] == 0x7F7F00) tiles[i] = Tile.rock;
+            if (levelPixels[i] == 0xFF00FF00) tiles[i] = Tile.grass;
+            if (levelPixels[i] == 0xFFFFFF00) tiles[i] = Tile.flower;
+            if (levelPixels[i] == 0xFF7F7F00) tiles[i] = Tile.rock;
         }
     }
 
