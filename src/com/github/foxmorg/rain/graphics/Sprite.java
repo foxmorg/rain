@@ -14,6 +14,15 @@ public class Sprite {
     public static Sprite playerBack = new Sprite(32, 2, 5, SpriteSheet.tiles);
     public static Sprite playerSide = new Sprite(32, 1, 5, SpriteSheet.tiles);
 
+    public static Sprite playerForward1 = new Sprite(32, 0, 6, SpriteSheet.tiles);
+    public static Sprite playerForward2 = new Sprite(32, 0, 7, SpriteSheet.tiles);
+
+    public static Sprite playerSide1 = new Sprite(32, 1, 6, SpriteSheet.tiles);
+    public static Sprite playerSide2 = new Sprite(32, 1, 7, SpriteSheet.tiles);
+
+    public static Sprite playerBack1 = new Sprite(32, 2, 6, SpriteSheet.tiles);
+    public static Sprite playerBack2 = new Sprite(32, 2, 7, SpriteSheet.tiles);
+
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         pixels = new int[SIZE * SIZE];
