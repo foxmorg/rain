@@ -5,6 +5,7 @@ import com.github.foxmorg.rain.graphics.Screen;
 import com.github.foxmorg.rain.input.Keyboard;
 import com.github.foxmorg.rain.level.Level;
 import com.github.foxmorg.rain.level.RandomLevel;
+import com.github.foxmorg.rain.level.SpawnLevel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,7 +40,8 @@ public class Game extends Canvas implements Runnable{
         screen = new Screen(width, height);
         frame = new JFrame();
         key = new Keyboard();
-        level = new RandomLevel(64, 64);
+//        level = new RandomLevel(64, 64);
+        level = new SpawnLevel("/textures/level.png");
         player = new Player(key);
 
         addKeyListener(key);
