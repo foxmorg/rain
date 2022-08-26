@@ -25,7 +25,7 @@ public class Tile {
     public static final int col_spawn_hedge = 0; //unused
     public static final int col_spawn_water = 0; //unused
     public static final int col_spawn_wall1 = 0xFF808080;
-    public static final int col_spawn_wall2 = 0xFF000000;
+    public static final int col_spawn_wall2 = 0xFF303030;
     public static final int col_spawn_floor = 0xFFFF9400;
 
     public Tile(Sprite sprite) {
