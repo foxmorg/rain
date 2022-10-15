@@ -4,7 +4,7 @@ import com.github.foxmorg.rain.entity.mob.Player;
 import com.github.foxmorg.rain.graphics.Screen;
 import com.github.foxmorg.rain.input.Keyboard;
 import com.github.foxmorg.rain.level.Level;
-import com.github.foxmorg.rain.level.SpawnLevel;
+import com.github.foxmorg.rain.level.TileCoordinate;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,8 +40,8 @@ public class Game extends Canvas implements Runnable{
         frame = new JFrame();
         key = new Keyboard();
         level = Level.spawn;
-        player = new Player(6 * 16, 4 * 16, key);
-
+        TileCoordinate playerSpawn = new TileCoordinate(19, 62);
+        player = new Player(playerSpawn.x(), playerSpawn.y(), key);
         addKeyListener(key);
     }
 
