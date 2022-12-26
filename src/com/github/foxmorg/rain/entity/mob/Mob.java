@@ -32,7 +32,13 @@ public abstract class Mob extends Entity {
     }
 
     private boolean collision(int xa, int ya) {
-        return level.getTile((x + xa) / 16, (y + ya) / 16).solid();
+        boolean solid = false;
+        for (int corner = 0; corner < 4; corner++) {
+            int xt = ((x + xa) + corner % 2 * 14 - 8) / 16;
+            int yt = ((y + ya) + corner / 2 * 12 + 3) / 16;
+            if (level.getTile(xt, yt).solid()) solid = true;
+        }
+        return solid;
     }
 
     public void render() {
