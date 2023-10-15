@@ -3,6 +3,7 @@ package com.github.foxmorg.rain;
 import com.github.foxmorg.rain.entity.mob.Player;
 import com.github.foxmorg.rain.graphics.Screen;
 import com.github.foxmorg.rain.input.Keyboard;
+import com.github.foxmorg.rain.input.Mouse;
 import com.github.foxmorg.rain.level.Level;
 import com.github.foxmorg.rain.level.TileCoordinate;
 
@@ -44,6 +45,10 @@ public class Game extends Canvas implements Runnable{
         player = new Player(playerSpawn.x(), playerSpawn.y(), key);
         player.init(level);
         addKeyListener(key);
+
+        Mouse mouse = new Mouse();
+        addMouseListener(mouse);
+        addMouseMotionListener(mouse);
     }
 
     public synchronized void start() {
@@ -118,6 +123,10 @@ public class Game extends Canvas implements Runnable{
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
         g.setColor(Color.WHITE);
         g.setFont(new Font("Verdana", 0, 50));
+        g.fillRect(Mouse.getX() - 32, Mouse.getY() - 32, 64, 64);
+        if (Mouse.getButton() != -1) {
+            g.drawString("Button: " + Mouse.getButton(), 80, 80);
+        }
 //        g.drawString("X: " + player.x + ", Y: " + player.y, 350, 300);
         g.dispose();
         bs.show();
